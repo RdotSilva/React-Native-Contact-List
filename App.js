@@ -4,6 +4,10 @@ import { Constants } from 'expo';
 import contacts from './contacts';
 
 export default class App extends React.Component {
+	state = {
+		showContacts: false
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
