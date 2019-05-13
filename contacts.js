@@ -190,3 +190,6 @@ const createContact = () => ({
 // compare two contacts for alphabetizing
 export const compareNames = (contact1, contact2) =>
 	contact1.name > contact2.name;
+
+// add keys to based on index
+const addKeys = (val, key) => ({ key, ...val });
