@@ -5,6 +5,8 @@ import Row from './Row';
 
 const renderItem = ({ item }) => <Row {...item} />;
 
+const renderSectionHeader = obj => <Text>{obj.section.title}</Text>;
+
 const ContactList = props => (
 	<SectionList
 		renderItem={props.renderItem}
