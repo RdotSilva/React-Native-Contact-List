@@ -166,3 +166,7 @@ const lastNames = [
 	'Carter',
 	'Murphy'
 ];
+
+// generate a random number between min and max
+const rand = (max, min = 0) =>
+	Math.floor(Math.random() * (max - min + 1)) + min;
