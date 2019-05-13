@@ -180,3 +180,9 @@ const generateName = () =>
 // generate a phone number
 const generatePhoneNumber = () =>
 	`${rand(999, 100)}-${rand(999, 100)}-${rand(9999, 1000)}`;
+
+// create a person
+const createContact = () => ({
+	name: generateName(),
+	phone: generatePhoneNumber()
+});
