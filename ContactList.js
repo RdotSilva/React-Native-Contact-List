@@ -15,4 +15,10 @@ const ContactList = props => (
 	/>
 );
 
+ContactsList.propTypes = {
+	renderItem: PropTypes.func,
+	renderSectionHeader: PropTypes.func,
+	contacts: PropTypes.array
+};
+
 export default ContactList;
