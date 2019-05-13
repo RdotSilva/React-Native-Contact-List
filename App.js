@@ -42,16 +42,7 @@ export default class App extends React.Component {
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				<Button title="sort" onPress={this.sort} />
 				{this.state.showContacts && (
-					<SectionList
-						renderItem={this.renderItem}
-						renderSectionHeader={this.renderSectionHeader}
-						sections={[
-							{
-								title: 'A',
-								data: this.state.contacts
-							}
-						]}
-					/>
+					
 				)}
 			</View>
 		);
