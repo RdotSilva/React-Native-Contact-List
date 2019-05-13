@@ -33,10 +33,11 @@ export default class App extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
+				<Button title="sort" onPress={this.sort} />
 				{this.state.showContacts && (
 					<FlatList
 						renderItem={obj => <Row {...obj.item} />}
-						data={contacts}
+						data={this.state.contacts}
 					/>
 				)}
 			</View>
