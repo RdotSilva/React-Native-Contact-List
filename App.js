@@ -17,17 +17,22 @@ export default class App extends React.Component {
 		contacts: contacts
 	};
 
+	// Toggle visibility of contacts
 	toggleContacts = () => {
 		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
 	};
 
+	// Sort contacts
 	sort = () => {
 		this.setState(prevState => ({
-			contacts: prevState.contacts.sort(compareNames)
+			contacts: [...prevState.contacts].sort(compareNames)
 		}));
 	};
 
-	renderItem = obj => <Row {...obj.item} />;
+	// item: {name: String, phone: String }
+	// renderItem = obj => <Row {...obj.item} />;
+	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
+	renderItem = ({ item }) => <Row {...item} />;
 
 	render() {
 		return (
@@ -36,7 +41,7 @@ export default class App extends React.Component {
 				<Button title="sort" onPress={this.sort} />
 				{this.state.showContacts && (
 					<FlatList
-						renderItem={obj => <Row {...obj.item} />}
+						renderItem={this.renderItem}
 						data={this.state.contacts}
 					/>
 				)}
