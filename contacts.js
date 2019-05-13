@@ -193,3 +193,6 @@ export const compareNames = (contact1, contact2) =>
 
 // add keys to based on index
 const addKeys = (val, key) => ({ key, ...val });
+
+// create an array of length NUM_CONTACTS and alphabetize by name
+export default Array.from({ length: NUM_CONTACTS }, createContact).map(addKeys);
