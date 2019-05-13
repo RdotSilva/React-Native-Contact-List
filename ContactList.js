@@ -16,16 +16,18 @@ const ContactList = props => {
 		};
 	}, {});
 
+	const sections = Object.keys(contactsByLetter)
+		.sort()
+		.map(letter => ({
+			title: letter,
+			data: contactsByLetter[letter]
+		}));
+
 	return (
 		<SectionList
 			renderItem={renderItem}
 			renderSectionHeader={renderSectionHeader}
-			sections={[
-				{
-					title: 'A',
-					data: props.contacts
-				}
-			]}
+			sections={sections}
 		/>
 	);
 };
