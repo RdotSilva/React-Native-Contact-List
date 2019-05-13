@@ -170,3 +170,9 @@ const lastNames = [
 // generate a random number between min and max
 const rand = (max, min = 0) =>
 	Math.floor(Math.random() * (max - min + 1)) + min;
+
+// generate a name
+const generateName = () =>
+	`${firstNames[rand(firstNames.length - 1)]} ${
+		lastNames[rand(lastNames.length - 1)]
+	}`;
