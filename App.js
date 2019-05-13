@@ -33,9 +33,6 @@ export default class App extends React.Component {
 	// item: {name: String, phone: String }
 	// renderItem = obj => <Row {...obj.item} />;
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
-	renderItem = ({ item }) => <Row {...item} />;
-
-	renderSectionHeader = obj => <Text>{obj.section.title}</Text>;
 
 	render() {
 		return (
@@ -43,11 +40,7 @@ export default class App extends React.Component {
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				<Button title="sort" onPress={this.sort} />
 				{this.state.showContacts && (
-					<ContactList
-						renderItem={this.renderItem}
-						renderSectionHeader={this.renderSectionHeader}
-						contacts={this.state.contacts}
-					/>
+					<ContactList contacts={this.state.contacts} />
 				)}
 			</View>
 		);
