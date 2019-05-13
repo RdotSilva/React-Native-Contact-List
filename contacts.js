@@ -192,6 +192,11 @@ export const compareNames = (contact1, contact2) =>
 	contact1.name > contact2.name;
 
 // add keys to based on index
+const addKeyToContact = (contact, key) => ({
+	key,
+	...contact
+});
+
 const addKeys = (val, key) => ({ key, ...val });
 
 // create an array of length NUM_CONTACTS and alphabetize by name
