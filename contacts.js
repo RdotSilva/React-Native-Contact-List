@@ -176,3 +176,7 @@ const generateName = () =>
 	`${firstNames[rand(firstNames.length - 1)]} ${
 		lastNames[rand(lastNames.length - 1)]
 	}`;
+
+// generate a phone number
+const generatePhoneNumber = () =>
+	`${rand(999, 100)}-${rand(999, 100)}-${rand(9999, 1000)}`;
