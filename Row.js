@@ -1,8 +1,14 @@
 import React from 'react';
-import { View, Row, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+	row: {
+		padding: 20
+	}
+});
 
 const Row = props => (
-	<View>
+	<View styles={styles.row}>
 		<Text>{props.name}</Text>
 		<Text>{props.phone}</Text>
 	</View>
