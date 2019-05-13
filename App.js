@@ -8,6 +8,10 @@ export default class App extends React.Component {
 		showContacts: false
 	};
 
+	toggleContacts = () => {
+		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
