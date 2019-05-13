@@ -3,6 +3,13 @@ import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Constants } from 'expo';
 import contacts from './contacts';
 
+const Row = props => (
+	<View key={props.key}>
+		<Text>{props.name}</Text>
+		<Text>{props.phone}</Text>
+	</View>
+);
+
 export default class App extends React.Component {
 	state = {
 		showContacts: false
@@ -18,10 +25,7 @@ export default class App extends React.Component {
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				<ScrollView>
 					{contacts.map(contact => (
-						<View key={contact.keys}>
-							<Text>{contact.name}</Text>
-							<Text>{contact.phone}</Text>
-						</View>
+						
 					))}
 				</ScrollView>
 			</View>
