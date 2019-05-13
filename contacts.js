@@ -186,3 +186,7 @@ const createContact = () => ({
 	name: generateName(),
 	phone: generatePhoneNumber()
 });
+
+// compare two contacts for alphabetizing
+export const compareNames = (contact1, contact2) =>
+	contact1.name > contact2.name;
