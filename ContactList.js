@@ -15,7 +15,7 @@ const ContactList = props => (
 	/>
 );
 
-ContactsList.propTypes = {
+ContactList.propTypes = {
 	renderItem: PropTypes.func,
 	renderSectionHeader: PropTypes.func,
 	contacts: PropTypes.array
