@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionList } from 'react-native';
+import { SectionList, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Row from './Row';
 
@@ -7,18 +7,28 @@ const renderItem = ({ item }) => <Row {...item} />;
 
 const renderSectionHeader = obj => <Text>{obj.section.title}</Text>;
 
-const ContactList = props => (
-	<SectionList
-		renderItem={props.renderItem}
-		renderSectionHeader={props.renderSectionHeader}
-		sections={[
-			{
-				title: 'A',
-				data: props.contacts
-			}
-		]}
-	/>
-);
+const ContactList = props => {
+	const contactsByLetter = props.contacts.reduce((obj, contact) => {
+		const firstLetter = contact.name[0].toUpperCase();
+		return {
+			...obj,
+			[firstLetter]: [...(obj[firstLetter] || []), contact]
+		};
+	}, {});
+
+	return (
+		<SectionList
+			renderItem={renderItem}
+			renderSectionHeader={renderSectionHeader}
+			sections={[
+				{
+					title: 'A',
+					data: props.contacts
+				}
+			]}
+		/>
+	);
+};
 
 ContactList.propTypes = {
 	renderItem: PropTypes.func,
