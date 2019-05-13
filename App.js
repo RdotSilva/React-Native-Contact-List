@@ -1,7 +1,7 @@
 import React from 'react';
 import {
 	Button,
-	FlatList,
+	SectionList,
 	ScrollView,
 	StyleSheet,
 	Text,
@@ -34,15 +34,23 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 	renderItem = ({ item }) => <Row {...item} />;
 
+	renderSectionHeader = obj => <Text>{obj.section.title}</Text>;
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				<Button title="sort" onPress={this.sort} />
 				{this.state.showContacts && (
-					<FlatList
+					<SectionList
 						renderItem={this.renderItem}
-						data={this.state.contacts}
+						renderSectionHeader={this.renderSectionHeader}
+						sections={[
+							{
+								title: 'A',
+								data: this.state.contacts
+							}
+						]}
 					/>
 				)}
 			</View>
