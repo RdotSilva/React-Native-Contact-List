@@ -11,16 +11,23 @@ import { Constants } from 'expo';
 import contacts, { compareNames } from './contacts';
 import Row from './Row';
 import ContactList from './ContactList';
+import AddContactForm from './AddContactForm';
 
 export default class App extends React.Component {
 	state = {
 		showContacts: false,
+		showForm: false,
 		contacts: contacts
 	};
 
 	// Toggle visibility of contacts
 	toggleContacts = () => {
 		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
+	};
+
+	// Toggle visibility of form
+	toggleForm = () => {
+		this.setState(prevState => ({ showForm: !prevState.showForm }));
 	};
 
 	// Sort contacts
