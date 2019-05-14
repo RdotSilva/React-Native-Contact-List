@@ -1,8 +1,27 @@
 import React from 'react';
-import { TextInput, View, Button } from 'react-native';
+import { TextInput, View, Button, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import { Constants } from 'expo';
 
-class AddContactForm extends React.Component {
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		paddingTop: Constants.statusBarHeight
+	},
+	input: {
+		borderWidth: 1,
+		borderColor: 'black',
+		minWidth: 100,
+		marginTop: 20,
+		marginHorizontal: 20,
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderRadius: 3
+	}
+});
+
+export default class AddContactForm extends React.Component {
 	static propTypes = {
 		addContact: PropTypes.func
 	};
@@ -14,13 +33,11 @@ class AddContactForm extends React.Component {
 
 	render() {
 		return (
-			<View>
-				<TextInput value={this.state.name} />
-				<TextInput value={this.state.phone} />
+			<View style={{ paddingTop: 20 }}>
+				<TextInput style={styles.input} value={this.state.name} />
+				<TextInput style={styles.input} value={this.state.phone} />
 				<Button title="Add Contact" />
 			</View>
 		);
 	}
 }
-
-export default AddContactForm;
