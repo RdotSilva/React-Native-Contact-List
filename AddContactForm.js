@@ -31,6 +31,10 @@ export default class AddContactForm extends React.Component {
 		phone: ''
 	};
 
+	handleNameChange = name => {
+		this.setState({ name });
+	};
+
 	render() {
 		return (
 			<View style={{ paddingTop: 20 }}>
