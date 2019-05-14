@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
 
 class AddContactForm extends React.Component {

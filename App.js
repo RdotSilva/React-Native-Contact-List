@@ -42,10 +42,11 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 
 	render() {
+		if (this.state.showForm) return <AddContactForm />;
 		return (
 			<View style={styles.container}>
-				<Button title="toggle contacts" onPress={this.toggleContacts} />
-				<Button title="sort" onPress={this.sort} />
+				<Button title="Toggle Contacts" onPress={this.toggleContacts} />
+				<Button title="Add Contact" onPress={this.toggleForm} />
 				{this.state.showContacts && (
 					<ContactList contacts={this.state.contacts} />
 				)}
