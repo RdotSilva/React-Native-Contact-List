@@ -6,11 +6,17 @@ class AddContactForm extends React.Component {
 	static propTypes = {
 		addContact: PropTypes.func
 	};
+
+	state = {
+		name: '',
+		phone: ''
+	};
+
 	render() {
 		return (
 			<View>
-				<TextInput />
-				<TextInput />
+				<TextInput value={this.state.name} />
+				<TextInput value={this.state.phone} />
 				<Button title="Add Contact" />
 			</View>
 		);
