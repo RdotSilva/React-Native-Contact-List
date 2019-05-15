@@ -42,14 +42,20 @@ export default class AddContactForm extends React.Component {
 		}
 	};
 
-	handleSubmit = () => {
+	validateForm = () => {
 		if (
 			+this.state.phone >= 0 &&
 			this.state.phone.length === 10 &&
 			this.state.name.length >= 3
 		) {
-			this.props.onSubmit(this.state);
+			return true;
+		} else {
+			return false;
 		}
+	};
+
+	handleSubmit = () => {
+		this.props.onSubmit(this.state);
 	};
 
 	render() {
