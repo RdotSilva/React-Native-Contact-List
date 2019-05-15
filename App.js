@@ -20,6 +20,13 @@ export default class App extends React.Component {
 		contacts: contacts
 	};
 
+	// Add a new conctact
+	addContact = newContact => {
+		this.setState(prevState => ({
+			contacts: [...this.state.contacts, newContact]
+		}));
+	};
+
 	// Toggle visibility of contacts
 	toggleContacts = () => {
 		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
