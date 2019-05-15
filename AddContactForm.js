@@ -28,7 +28,8 @@ export default class AddContactForm extends React.Component {
 
 	state = {
 		name: '',
-		phone: ''
+		phone: '',
+		isFormValid: false
 	};
 
 	handleNameChange = name => {
@@ -67,7 +68,11 @@ export default class AddContactForm extends React.Component {
 					placeholder="Phone"
 					keyboardType="numeric"
 				/>
-				<Button title="Add Contact" onPress={this.handleSubmit} />
+				<Button
+					title="Add Contact"
+					onPress={this.handleSubmit}
+					disabled={!this.state.isFormValid}
+				/>
 			</View>
 		);
 	}
