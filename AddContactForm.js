@@ -33,12 +33,12 @@ export default class AddContactForm extends React.Component {
 	};
 
 	handleNameChange = name => {
-		this.setState({ name });
+		this.setState({ name }, this.validateForm);
 	};
 
 	handlePhoneChange = phone => {
 		if (+phone >= 0 && phone.length <= 10) {
-			this.setState({ phone });
+			this.setState({ phone }, this.validateForm);
 		}
 	};
 
@@ -48,9 +48,9 @@ export default class AddContactForm extends React.Component {
 			this.state.phone.length === 10 &&
 			this.state.name.length >= 3
 		) {
-			return true;
+			return this.setState({ isFormValid: true });
 		} else {
-			return false;
+			return this.setState({ isformValid: false });
 		}
 	};
 
