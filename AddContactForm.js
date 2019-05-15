@@ -39,6 +39,10 @@ export default class AddContactForm extends React.Component {
 		this.setState({ phone });
 	};
 
+	handleSubmit = () => {
+		this.props.onSubmit(this.state);
+	};
+
 	render() {
 		return (
 			<View style={{ paddingTop: 20 }}>
