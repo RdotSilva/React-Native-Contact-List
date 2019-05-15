@@ -46,14 +46,16 @@ export default class AddContactForm extends React.Component {
 					style={styles.input}
 					onChangeText={this.handleNameChange}
 					value={this.state.name}
+					placeholder="Name"
 				/>
 				<TextInput
 					style={styles.input}
 					onChangeText={this.handlePhoneChange}
 					value={this.state.phone}
+					placeholder="Phone"
 					keyboardType="numeric"
 				/>
-				<Button title="Add Contact" />
+				<Button title="Add Contact" onPress={this.handleSubmit} />
 			</View>
 		);
 	}
