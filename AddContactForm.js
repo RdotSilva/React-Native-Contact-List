@@ -36,7 +36,9 @@ export default class AddContactForm extends React.Component {
 	};
 
 	handlePhoneChange = phone => {
-		this.setState({ phone });
+		if (+phone >= 0 && phone.length <= 10) {
+			this.setState({ phone });
+		}
 	};
 
 	handleSubmit = () => {
