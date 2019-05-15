@@ -23,6 +23,7 @@ export default class App extends React.Component {
 	// Add a new conctact
 	addContact = newContact => {
 		this.setState(prevState => ({
+			showForm: false,
 			contacts: [...this.state.contacts, newContact]
 		}));
 	};
@@ -49,7 +50,8 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 
 	render() {
-		if (this.state.showForm) return <AddContactForm />;
+		if (this.state.showForm)
+			return <AddContactForm onSubmit={this.addContact} />;
 		return (
 			<View style={styles.container}>
 				<Button title="Toggle Contacts" onPress={this.toggleContacts} />
