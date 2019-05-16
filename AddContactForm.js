@@ -1,5 +1,11 @@
 import React from 'react';
-import { TextInput, View, Button, StyleSheet } from 'react-native';
+import {
+	TextInput,
+	View,
+	Button,
+	StyleSheet,
+	KeyboardAvoidingView
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { Constants } from 'expo';
 
@@ -7,7 +13,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-		paddingTop: Constants.statusBarHeight
+		paddingTop: Constants.statusBarHeight,
+		justifyContent: 'center'
 	},
 	input: {
 		borderWidth: 1,
@@ -69,7 +76,7 @@ export default class AddContactForm extends React.Component {
 
 	render() {
 		return (
-			<View style={{ paddingTop: 20 }}>
+			<KeyboardAvoidingView style={{ paddingTop: 20 }}>
 				<TextInput
 					style={styles.input}
 					onChangeText={this.handleNameChange}
@@ -88,7 +95,7 @@ export default class AddContactForm extends React.Component {
 					onPress={this.handleSubmit}
 					disabled={!this.state.isFormValid}
 				/>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }
