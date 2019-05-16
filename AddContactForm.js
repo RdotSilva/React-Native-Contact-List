@@ -76,7 +76,7 @@ export default class AddContactForm extends React.Component {
 
 	render() {
 		return (
-			<KeyboardAvoidingView style={{ paddingTop: 20 }}>
+			<KeyboardAvoidingView behavior="padding" style={{ paddingTop: 20 }}>
 				<TextInput
 					style={styles.input}
 					onChangeText={this.handleNameChange}
