@@ -48,12 +48,14 @@ export default class AddContactForm extends React.Component {
 		}
 	}
 
+	// Handler method pass this into onChangeText
 	getHandler = key => val => {
 			this.setState({ [key]: val });
 		};
 	};
 
-	// handleNameChange = this.handleUpdate('name'); //  val => { this.setState({name: val}) }
+	handleNameChange = this.handleUpdate('name'); //  val => { this.setState({name: val}) }
+	handlePhoneChange = this.getHandler('phone');
 
 	// handleNameChange = name => {
 	// 	this.setState({ name });
