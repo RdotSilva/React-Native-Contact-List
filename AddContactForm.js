@@ -48,15 +48,17 @@ export default class AddContactForm extends React.Component {
 		}
 	}
 
-	handleUpdate = key => {
+	getHandler = key => {
 		val => {
 			this.setState({ [key]: val });
 		};
 	};
 
-	handleNameChange = name => {
-		this.setState({ name });
-	};
+	// handleNameChange = this.handleUpdate('name'); //  val => { this.setState({name: val}) }
+
+	// handleNameChange = name => {
+	// 	this.setState({ name });
+	// };
 
 	handlePhoneChange = phone => {
 		if (+phone >= 0 && phone.length <= 10) {
