@@ -88,7 +88,7 @@ export default class AddContactForm extends React.Component {
 
 	render() {
 		return (
-			<KeyboardAvoidingView behavior="padding" style={{ paddingTop: 20 }}>
+			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				<TextInput
 					style={styles.input}
 					onChangeText={this.getHandler('name')}
@@ -105,7 +105,7 @@ export default class AddContactForm extends React.Component {
 				<Button
 					title="Add Contact"
 					onPress={this.handleSubmit}
-					disabled={this.state.isFormValid}
+					disabled={!this.state.isFormValid}
 				/>
 			</KeyboardAvoidingView>
 		);
