@@ -50,11 +50,10 @@ export default class AddContactForm extends React.Component {
 
 	// Handler method pass this into onChangeText
 	getHandler = key => val => {
-			this.setState({ [key]: val });
-		};
+		this.setState({ [key]: val });
 	};
 
-	handleNameChange = this.handleUpdate('name'); //  val => { this.setState({name: val}) }
+	handleNameChange = this.getHandler('name'); //  val => { this.setState({name: val}) }
 	handlePhoneChange = this.getHandler('phone');
 
 	// handleNameChange = name => {
@@ -68,14 +67,18 @@ export default class AddContactForm extends React.Component {
 	};
 
 	validateForm = () => {
+		console.log(this.state);
+		const names = this.state.name.split(' ');
 		if (
 			+this.state.phone >= 0 &&
 			this.state.phone.length === 10 &&
-			this.state.name.length >= 3
+			names.length >= 2 &&
+			names[0] &&
+			names[1]
 		) {
-			return this.setState({ isFormValid: true });
+			this.setState({ isFormValid: true });
 		} else {
-			return this.setState({ isformValid: false });
+			this.setState({ isFormValid: false });
 		}
 	};
 
@@ -102,7 +105,7 @@ export default class AddContactForm extends React.Component {
 				<Button
 					title="Add Contact"
 					onPress={this.handleSubmit}
-					disabled={!this.state.isFormValid}
+					disabled={this.state.isFormValid}
 				/>
 			</KeyboardAvoidingView>
 		);
