@@ -48,8 +48,7 @@ export default class AddContactForm extends React.Component {
 		}
 	}
 
-	getHandler = key => {
-		val => {
+	getHandler = key => val => {
 			this.setState({ [key]: val });
 		};
 	};
@@ -87,13 +86,13 @@ export default class AddContactForm extends React.Component {
 			<KeyboardAvoidingView behavior="padding" style={{ paddingTop: 20 }}>
 				<TextInput
 					style={styles.input}
-					onChangeText={this.handleNameChange}
+					onChangeText={this.getHandler('name')}
 					value={this.state.name}
 					placeholder="Name"
 				/>
 				<TextInput
 					style={styles.input}
-					onChangeText={this.handlePhoneChange}
+					onChangeText={this.getHandler('phone')}
 					value={this.state.phone}
 					placeholder="Phone"
 					keyboardType="numeric"
