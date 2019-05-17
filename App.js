@@ -16,7 +16,6 @@ import AddContactForm from './AddContactForm';
 export default class App extends React.Component {
 	state = {
 		showContacts: false,
-		showForm: false,
 		contacts: contacts
 	};
 
@@ -50,8 +49,7 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 
 	render() {
-		if (this.state.showForm)
-			return <AddContactForm onSubmit={this.addContact} />;
+		if (this.state.showForm) return;
 		return (
 			<View style={styles.container}>
 				<Button title="Toggle Contacts" onPress={this.toggleContacts} />
