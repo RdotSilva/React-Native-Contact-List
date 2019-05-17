@@ -25,6 +25,10 @@ export default class ContactListScreen extends React.Component {
 		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
 	};
 
+	handleSelectContact = contact => {
+		this.props.navigation.push('ContactDetails', contact);
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
