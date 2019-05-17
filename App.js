@@ -41,7 +41,14 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 
 	render() {
-		return <AppNavigator />;
+		return (
+			<AppNavigator
+				screenProps={{
+					contacts: this.state.contacts,
+					addContact: this.addContact
+				}}
+			/>
+		);
 	}
 }
 
