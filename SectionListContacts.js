@@ -32,10 +32,10 @@ const SectionListContacts = props => {
 	);
 };
 
-ContactList.propTypes = {
+SectionListContacts.propTypes = {
 	renderItem: PropTypes.func,
 	renderSectionHeader: PropTypes.func,
 	contacts: PropTypes.array
 };
 
-export default ContactList;
+export default SectionListContacts;
