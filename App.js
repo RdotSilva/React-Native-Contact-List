@@ -9,10 +9,22 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 import contacts, { compareNames } from './contacts';
+import { createSwitchNavigator } from 'react-navigation';
+import AddContactScreen from './screens/AddContactScreen';
+import ContactListScreen from './screens/ContactListScreen';
+
+const AppNavigator = createSwitchNavigator(
+	{
+		AddContact: AddContactScreen,
+		ContactList: ContactListScreen
+	},
+	{
+		initialRouteName: 'ContactList'
+	}
+);
 
 export default class App extends React.Component {
 	state = {
-		showContacts: false,
 		contacts: contacts
 	};
 
@@ -29,7 +41,7 @@ export default class App extends React.Component {
 	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
 
 	render() {
-		return; //something
+		return <AppNavigator />;
 	}
 }
 
