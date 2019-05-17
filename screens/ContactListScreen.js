@@ -21,6 +21,10 @@ export default class ContactListScreen extends React.Component {
 		showContacts: true
 	};
 
+	toggleContacts = () => {
+		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
