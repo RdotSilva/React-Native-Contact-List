@@ -7,16 +7,23 @@ export default class LoginScreen extends React.Component {
 		password: ''
 	};
 
-	_login = () => {
-		fetch('http://localhost:8000', {
+	_login = async () => {
+		const response = await fetch('http://localhost:8000', {
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({
 				username: this.state.username,
 				password: this.state.password
 			})
-		}).then(res => console.log(res));
-		this.props.navigation.navigate('Main');
+		});
+
+		if (response.ok) {
+			this.props.navigation.navigate('Main');
+			return;
+		}
+
+		const errMessage = await response.text();
+		this.setState({ err: errMessage });
 	};
 
 	handleUsernameUpdate = username => {
