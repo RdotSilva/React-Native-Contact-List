@@ -19,6 +19,7 @@ import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import { Ionicons } from 'react-native-vector-icons';
 
 const ContactsTab = createStackNavigator(
 	{
@@ -33,6 +34,16 @@ const ContactsTab = createStackNavigator(
 		}
 	}
 );
+
+ContactsTab.navigationOptions = {
+	tabBarIcon: ({ focused, tintColor }) => (
+		<Ionicons
+			name={`ios-contacts${focused ? '' : '-outline'}`}
+			size={25}
+			color={tintColor}
+		/>
+	)
+};
 
 const MainNavigator = createTabNavigator(
 	{
