@@ -1,30 +1,25 @@
 import React from 'react';
-import { Button, View, StyleSheet, TextInput, Text } from 'react-native';
+import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
+
+import { login } from '../api';
 
 export default class LoginScreen extends React.Component {
 	state = {
 		username: '',
-		password: '',
-		err: ''
+		password: ''
 	};
 
 	_login = async () => {
-		const response = await fetch('http://localhost:8000', {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password
-			})
-		});
-
-		if (response.ok) {
+		try {
+			const success = await login(
+				this.state.username,
+				this.state.password
+			);
 			this.props.navigation.navigate('Main');
-			return;
+		} catch (err) {
+			const errMessage = err.message;
+			this.setState({ err: errMessage });
 		}
-
-		const errMessage = await response.text();
-		this.setState({ err: errMessage });
 	};
 
 	handleUsernameUpdate = username => {
