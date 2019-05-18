@@ -14,6 +14,7 @@ import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 const ContactsTab = createStackNavigator(
 	{
@@ -28,6 +29,11 @@ const ContactsTab = createStackNavigator(
 		}
 	}
 );
+
+const MainNavigator = createTabNavigator({
+	Contacts: ContactsTab,
+	Settings: SettingsScreen
+});
 
 const AppNavigator = createSwitchNavigator(
 	{
