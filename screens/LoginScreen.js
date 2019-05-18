@@ -11,8 +11,12 @@ export default class LoginScreen extends React.Component {
 		this.props.navigation.navigate('Main');
 	};
 
-	handleUsernameUpdate = uername => {
+	handleUsernameUpdate = username => {
 		this.setState({ username });
+	};
+
+	handlePasswordUpdate = password => {
+		this.setState({ password });
 	};
 
 	render() {
@@ -23,7 +27,11 @@ export default class LoginScreen extends React.Component {
 					value={this.state.username}
 					onChangeText={this.handleUsernameUpdate}
 				/>
-				<TextInput placeholder="password" />
+				<TextInput
+					placeholder="password"
+					value={this.state.password}
+					onChangeText={this.handlePasswordUpdate}
+				/>
 				<Button title="Press to Log In" onPress={this._login} />
 			</View>
 		);
