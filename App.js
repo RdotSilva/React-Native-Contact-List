@@ -9,7 +9,11 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 import contacts, { compareNames } from './contacts';
-import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import {
+	createStackNavigator,
+	createSwitchNavigator,
+	createTabNavigator
+} from 'react-navigation';
 import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
@@ -30,10 +34,17 @@ const ContactsTab = createStackNavigator(
 	}
 );
 
-const MainNavigator = createTabNavigator({
-	Contacts: ContactsTab,
-	Settings: SettingsScreen
-});
+const MainNavigator = createTabNavigator(
+	{
+		Contacts: ContactsTab,
+		Settings: SettingsScreen
+	},
+	{
+		tabBarOptions: {
+			activeTintColor: '#a40134'
+		}
+	}
+);
 
 const AppNavigator = createSwitchNavigator(
 	{
