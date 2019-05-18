@@ -69,8 +69,14 @@ const AppNavigator = createSwitchNavigator(
 
 export default class App extends React.Component {
 	state = {
-		contacts: contacts
+		contacts: null
 	};
+
+	componentDidMount() {
+		fetch('https://randomuser.me/api/?results=50&nat=us')
+			.then(response => response.json())
+			.then(({ results }) => this.setState({ contacts: results }));
+	}
 
 	// Add a new conctact
 	addContact = newContact => {
