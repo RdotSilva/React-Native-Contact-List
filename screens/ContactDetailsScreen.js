@@ -5,7 +5,7 @@ export default class ContactDetailsScreen extends Component {
 	render() {
 		return (
 			<View>
-				<Text>Phone # coming</Text>
+				<Text>{this.props.navigation.getParam('phone')}</Text>
 				<Button title="Go to contact" />
 			</View>
 		);
