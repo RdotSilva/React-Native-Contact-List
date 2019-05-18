@@ -73,7 +73,7 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount() {
-		fetchUsers();
+		this.fetchUsers();
 	}
 
 	fetchUsers = async () => {
