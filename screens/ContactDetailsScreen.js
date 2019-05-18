@@ -24,7 +24,7 @@ export default class ContactDetailsScreen extends Component {
 				randomContact = contacts[randomIndex];
 			}
 		}
-		this.props.navigation.navigate('ContactDetails', {
+		this.props.navigation.push('ContactDetails', {
 			name: randomContact.name,
 			phone: randomContact.phone
 		});
