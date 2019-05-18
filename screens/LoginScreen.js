@@ -49,6 +49,7 @@ export default class LoginScreen extends React.Component {
 					placeholder="password"
 					value={this.state.password}
 					onChangeText={this.handlePasswordUpdate}
+					secureTextEntry
 				/>
 				<Button title="Press to Log In" onPress={this._login} />
 			</View>
