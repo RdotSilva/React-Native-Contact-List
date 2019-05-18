@@ -3,13 +3,16 @@ import { Button, Text, View } from 'react-native';
 
 export default class ContactDetailsScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
-		headerTitle: navigation.getParm('name')
+		headerTitle: navigation.getParam('name')
 	});
 	render() {
 		return (
 			<View>
 				<Text>{this.props.navigation.getParam('phone')}</Text>
-				<Button title="Go to contact" />
+				<Button
+					title="Go to a random contact"
+					onPress={this._goToRandom}
+				/>
 			</View>
 		);
 	}
