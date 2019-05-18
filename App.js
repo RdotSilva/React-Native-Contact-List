@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 import contacts, { compareNames } from './contacts';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
@@ -22,7 +22,10 @@ const MainNavigator = createStackNavigator(
 		ContactDetails: ContactDetailsScreen
 	},
 	{
-		initialRouteName: 'ContactList'
+		initialRouteName: 'ContactList',
+		navigationOptions: {
+			headerTintColor: '#a41034'
+		}
 	}
 );
 
