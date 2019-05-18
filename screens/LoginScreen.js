@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, StyleSheet, Text } from 'react-native';
+import { Button, View, StyleSheet, TextInput } from 'react-native';
 
 export default class LoginScreen extends React.Component {
 	_login = () => {
@@ -9,7 +9,12 @@ export default class LoginScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.text}>You are currently logged out.</Text>
+				<TextInput
+					placeholder="username"
+					value={this.state.username}
+					onChangeText={this.handleUsernameUpdate}
+				/>
+				<TextInput placeholder="password" />
 				<Button title="Press to Log In" onPress={this._login} />
 			</View>
 		);
