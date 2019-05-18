@@ -13,6 +13,7 @@ import { createStackNavigator } from 'react-navigation';
 import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const MainNavigator = createStackNavigator(
 	{
@@ -22,6 +23,16 @@ const MainNavigator = createStackNavigator(
 	},
 	{
 		initialRouteName: 'ContactList'
+	}
+);
+
+const AppNavigator = createSwitchNavigator(
+	{
+		Main: MainNavigator,
+		Login: LoginScreen
+	},
+	{
+		initialRouteName: 'Login'
 	}
 );
 
