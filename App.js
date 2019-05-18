@@ -15,7 +15,7 @@ import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 
-const MainNavigator = createStackNavigator(
+const ContactsTab = createStackNavigator(
 	{
 		AddContact: AddContactScreen,
 		ContactList: ContactListScreen,
