@@ -12,7 +12,7 @@ import contacts, { compareNames } from './contacts';
 import {
 	createStackNavigator,
 	createSwitchNavigator,
-	createTabNavigator
+	createBottomTabNavigator
 } from 'react-navigation';
 import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
@@ -45,7 +45,7 @@ ContactsTab.navigationOptions = {
 	)
 };
 
-const MainNavigator = createTabNavigator(
+const MainNavigator = createBottomTabNavigator(
 	{
 		Contacts: ContactsTab,
 		Settings: SettingsScreen
