@@ -2,6 +2,10 @@ import React from 'react';
 import { Button, View, StyleSheet, TextInput } from 'react-native';
 
 export default class LoginScreen extends React.Component {
+	state = {
+		username: '',
+		password: ''
+	};
 	_login = () => {
 		this.props.navigation.navigate('Main');
 	};
