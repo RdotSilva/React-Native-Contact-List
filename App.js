@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 import contacts, { compareNames } from './contacts';
-import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import AddContactScreen from './screens/AddContactScreen';
 import ContactListScreen from './screens/ContactListScreen';
 
-const AppNavigator = createSwitchNavigator(
+const AppNavigator = createStackNavigator(
 	{
 		AddContact: AddContactScreen,
 		ContactList: ContactListScreen
