@@ -7,7 +7,12 @@ const renderSectionHeader = obj => <Text>{obj.section.title}</Text>;
 
 const SectionListContacts = props => {
 	const renderItem = ({ item }) => (
-		<Row {...item} onSelectContact={props.onSelectContact} />
+		<Row
+			{...item}
+			onSelectContact={contact => {
+				props.onSelectContact(contact);
+			}}
+		/>
 	);
 
 	const contactsByLetter = props.contacts.reduce((obj, contact) => {
