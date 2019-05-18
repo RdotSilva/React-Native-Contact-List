@@ -6,8 +6,13 @@ export default class LoginScreen extends React.Component {
 		username: '',
 		password: ''
 	};
+
 	_login = () => {
 		this.props.navigation.navigate('Main');
+	};
+
+	handleUsernameUpdate = uername => {
+		this.setState({ username });
 	};
 
 	render() {
