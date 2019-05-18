@@ -15,3 +15,13 @@ export default class LoginScreen extends React.Component {
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		justifyContent: 'center',
+		flex: 1
+	},
+	text: {
+		textAlign: 'center'
+	}
+});
