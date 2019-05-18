@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-
+import { Constants } from 'expo';
 import SectionListContacts from '../SectionListContacts';
 
 export default class ContactListScreen extends React.Component {
