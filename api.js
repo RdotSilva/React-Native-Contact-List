@@ -3,6 +3,5 @@ export const fetchUsers = async () => {
 		'https://randomuser.me/api/?results=50&nat=us'
 	);
 	const { results } = await response.json();
-	console.log(results);
-	this.setState({ contacts: results });
+	return results;
 };

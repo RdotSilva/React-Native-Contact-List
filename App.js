@@ -8,7 +8,6 @@ import {
 	View
 } from 'react-native';
 import { Constants } from 'expo';
-import contacts, { compareNames } from './contacts';
 import {
 	createStackNavigator,
 	createSwitchNavigator,
@@ -20,6 +19,7 @@ import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import { Ionicons } from 'react-native-vector-icons';
+import { fetchUsers } from './api';
 
 const ContactsTab = createStackNavigator(
 	{
@@ -73,8 +73,14 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount() {
-		this.fetchUsers();
+		this.getUsers();
 	}
+
+	// Fetch users from api.js and set state with results
+	getUsers = async () => {
+		const results = await fetchUsers();
+		this.setState({ contacts: results });
+	};
 
 	// Add a new conctact
 	addContact = newContact => {
