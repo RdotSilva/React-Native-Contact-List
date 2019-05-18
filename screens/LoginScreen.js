@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, View, StyleSheet, TextInput } from 'react-native';
+import { Button, View, StyleSheet, TextInput, Text } from 'react-native';
 
 export default class LoginScreen extends React.Component {
 	state = {
 		username: '',
-		password: ''
+		password: '',
+		err: ''
 	};
 
 	_login = async () => {
@@ -42,6 +43,7 @@ export default class LoginScreen extends React.Component {
 					placeholder="username"
 					value={this.state.username}
 					onChangeText={this.handleUsernameUpdate}
+					autoCapitalize="none"
 				/>
 				<TextInput
 					placeholder="password"
@@ -61,5 +63,9 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: 'center'
+	},
+	error: {
+		textAlign: 'center',
+		color: 'red'
 	}
 });
