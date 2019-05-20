@@ -13,6 +13,10 @@ class Store {
 }
 
 const contactReducer = (state, newContact) => [...state, newContact];
+const userReducer = (state, update) => ({
+	...state,
+	...update
+});
 
 const store = new Store(reducer);
 
