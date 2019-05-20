@@ -16,31 +16,35 @@ class Store {
 	}
 }
 
-const contactReducer = (state, newContact) => [...state, newContact];
-const userReducer = (state, update) => ({
-	...state,
-	...update
-});
+const contactReducer = (state, action) => {
+	if (action.type === UPDATE_CONTACT) {
+		return [...state, action.payload];
+	}
+	return state;
+};
+
+const userReducer = (state, action) => {
+	if (action.type === UPDATE_USER) {
+		return {
+			...state,
+			...action.payload
+		};
+	}
+	if (action.type === UPDATE_CONTACT) {
+		return {
+			...state,
+			prevContact: action.payload
+		};
+	}
+	return state;
+};
 
 const DEFAULT_STATE = { user: {}, contacts: [] };
 
-const reducer = (state, action) => {
-	if (action.type === 'UPDATE_USER') {
-		return {
-			...state,
-			user: userReducer(state.user, action.payload)
-		};
-	}
-
-	if (action.type === 'UPDATE_CONTACT') {
-		return {
-			...state,
-			contacts: contactReducer(state.contacts, action.payload)
-		};
-	}
-
-	return state;
-};
+const reducer = (state, action) => ({
+	user: userReducer(state.user, action),
+	contacts: contactReducer(state.contacts, action)
+});
 
 //Action Creators
 const updateUser = update => ({
@@ -61,5 +65,6 @@ store.dispatch(updateUser({ foo: 'baz' }));
 
 store.dispatch(addContact({ name: 'My Name', number: '12345' }));
 store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
+store.dispatch(addContact({ name: 'My Name 3', number: '55353' }));
 
 console.log(store.getState());
