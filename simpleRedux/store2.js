@@ -42,9 +42,15 @@ const reducer = (state, action) => {
 	return state;
 };
 
+//Action Creators
 const updateUser = update => ({
 	type: UPDATE_USER,
 	payload: update
+});
+
+const addContact = newContact => ({
+	type: UPDATE_CONTACT,
+	payload: newContact
 });
 
 const store = new Store(reducer, DEFAULT_STATE);
@@ -53,14 +59,7 @@ store.dispatch(updateUser({ foo: 'foo' }));
 store.dispatch(updateUser({ bar: 'bar' }));
 store.dispatch(updateUser({ foo: 'baz' }));
 
-store.dispatch({
-	type: UPDATE_CONTACT,
-	payload: { name: 'My Name', number: '1234566789' }
-});
-
-store.dispatch({
-	type: UPDATE_CONTACT,
-	payload: { name: 'Fake Name', number: '525525' }
-});
+store.dispatch(addContact({ name: 'My Name', number: '12345' }));
+store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
 
 console.log(store.getState());
