@@ -1,8 +1,3 @@
-const reducer = (state, update) => ({
-	...state,
-	...update
-});
-
 class Store {
 	constructor(reducer, initialState) {
 		(this.reducer = reducer), (this.state = initialState);
@@ -17,10 +12,15 @@ class Store {
 	}
 }
 
-const store = new Store(reducer, { foo: 'foo' });
+const reducer = (state, update) => ({
+	...state,
+	...update
+});
+
+const store = new Store(reducer);
 
 store.dispatch({ foo: 'foo' });
 store.dispatch({ bar: 'bar' });
 store.dispatch({ foo: 'baz' });
 
-console.log(store.getState());
+console.log(store.getState()); // { foo: 'baz', bar: 'bar' }
