@@ -42,11 +42,16 @@ const reducer = (state, action) => {
 	return state;
 };
 
+const updateUser = update => ({
+	type: UPDATE_USER,
+	payload: update
+});
+
 const store = new Store(reducer, DEFAULT_STATE);
 
-store.dispatch({ type: UPDATE_USER, payload: { foo: 'foo' } });
-store.dispatch({ type: UPDATE_USER, payload: { bar: 'bar' } });
-store.dispatch({ type: UPDATE_USER, payload: { foo: 'baz' } });
+store.dispatch(updateUser({ foo: 'foo' }));
+store.dispatch(updateUser({ bar: 'bar' }));
+store.dispatch(updateUser({ foo: 'baz' }));
 
 store.dispatch({
 	type: UPDATE_CONTACT,
