@@ -18,6 +18,8 @@ const userReducer = (state, update) => ({
 	...update
 });
 
+const DEFAULT_STATE = { user: {}, contacts: [] };
+
 const reducer = (state, action) => {
 	if (action.type === 'UPDATE_USER') {
 		return {
@@ -28,7 +30,7 @@ const reducer = (state, action) => {
 	return state;
 };
 
-const store = new Store(reducer);
+const store = new Store(reducer, DEFAULT_STATE);
 
 store.dispatch({ type: 'UPDATE_USER', payload: { foo: 'foo' } });
 store.dispatch({ type: 'UPDATE_USER', payload: { bar: 'bar' } });
