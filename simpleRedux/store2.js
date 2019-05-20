@@ -18,10 +18,20 @@ const userReducer = (state, update) => ({
 	...update
 });
 
+const reducer = (state, action) => {
+	if (action.type === 'UPDATE_USER') {
+		return {
+			...state,
+			user: userReducer(state.user, action.payload)
+		};
+	}
+	return state;
+};
+
 const store = new Store(reducer);
 
-store.dispatch({ foo: 'foo' });
-store.dispatch({ bar: 'bar' });
-store.dispatch({ foo: 'baz' });
+store.dispatch({ type: 'UPDATE_USER', payload: { foo: 'foo' } });
+store.dispatch({ type: 'UPDATE_USER', payload: { bar: 'bar' } });
+store.dispatch({ type: 'UPDATE_USER', payload: { foo: 'baz' } });
 
 console.log(store.getState()); // { foo: 'baz', bar: 'bar' }
