@@ -1,3 +1,7 @@
+// Action Types
+const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_CONTACT = 'UPDATE_CONTACT';
+
 class Store {
 	constructor(reducer, initialState) {
 		(this.reducer = reducer), (this.state = initialState);
@@ -40,8 +44,18 @@ const reducer = (state, action) => {
 
 const store = new Store(reducer, DEFAULT_STATE);
 
-store.dispatch({ type: 'UPDATE_USER', payload: { foo: 'foo' } });
-store.dispatch({ type: 'UPDATE_USER', payload: { bar: 'bar' } });
-store.dispatch({ type: 'UPDATE_USER', payload: { foo: 'baz' } });
+store.dispatch({ type: UPDATE_USER, payload: { foo: 'foo' } });
+store.dispatch({ type: UPDATE_USER, payload: { bar: 'bar' } });
+store.dispatch({ type: UPDATE_USER, payload: { foo: 'baz' } });
 
-console.log(store.getState()); // { foo: 'baz', bar: 'bar' }
+store.dispatch({
+	type: UPDATE_CONTACT,
+	payload: { name: 'My Name', number: '1234566789' }
+});
+
+store.dispatch({
+	type: UPDATE_CONTACT,
+	payload: { name: 'Fake Name', number: '525525' }
+});
+
+console.log(store.getState());
