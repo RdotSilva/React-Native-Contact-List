@@ -27,6 +27,14 @@ const reducer = (state, action) => {
 			user: userReducer(state.user, action.payload)
 		};
 	}
+
+	if (action.type === 'UPDATE_CONTACT') {
+		return {
+			...state,
+			contacts: contactReducer(state.contacts, action.payload)
+		};
+	}
+
 	return state;
 };
 
