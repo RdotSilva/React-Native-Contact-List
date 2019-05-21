@@ -1,21 +1,19 @@
 import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-import { Constants } from 'expo';
 import SectionListContacts from '../SectionListContacts';
+import store from '../redux/store';
 
 export default class ContactListScreen extends React.Component {
-	static navigationOptions = ({ navigation }) => {
-		return {
-			headerTitle: 'Contacts',
-			headerRight: (
-				<Button
-					title="Add"
-					onPress={() => navigation.navigate('AddContact')}
-					color="#a41034"
-				/>
-			)
-		};
-	};
+	static navigationOptions = ({ navigation }) => ({
+		headerTitle: 'Contacts',
+		headerRight: (
+			<Button
+				title="Add"
+				onPress={() => navigation.navigate('AddContact')}
+				color="#a41034"
+			/>
+		)
+	});
 
 	state = {
 		showContacts: true
@@ -30,18 +28,15 @@ export default class ContactListScreen extends React.Component {
 	};
 
 	render() {
+		const contacts = store.getState().contacts;
+
 		return (
 			<View style={styles.container}>
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				{this.state.showContacts && (
 					<SectionListContacts
-						contacts={this.props.screenProps.contacts}
-						onSelectContact={contact => {
-							this.props.navigation.navigate('ContactDetails', {
-								phone: contact.phone,
-								name: contact.name
-							});
-						}}
+						contacts={contacts}
+						onSelectContact={this.handleSelectContact}
 					/>
 				)}
 			</View>

@@ -81,13 +81,6 @@ export default class App extends React.Component {
 	};
 
 	render() {
-		return (
-			<MainTabs
-				screenProps={{
-					contacts: this.state.contacts,
-					addContact: this.addContact
-				}}
-			/>
-		);
+		return <MainTabs />;
 	}
 }
