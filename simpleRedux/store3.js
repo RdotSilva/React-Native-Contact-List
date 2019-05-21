@@ -46,19 +46,24 @@ const contactReducer = (state, action) => {
 };
 
 const userReducer = (state, action) => {
-	if (action.type === UPDATE_USER) {
-		return {
-			...state,
-			...action.payload
-		};
-	}
-	if (action.type === UPDATE_CONTACT) {
-		return {
-			...state,
-			prevContact: action.payload
-		};
-	}
-	return state;
+	switch (action.type) {
+		case UPDATE_USER:
+				return {
+					...state,
+					...action.payload
+				};
+		case UPDATE_CONTACT:
+				return {
+					...state,
+					prevContact: action.payload
+				};
+		case 'LOG_IN_SUCCESS':
+			return {
+				...state,
+				token: 'fakeToken'
+			}
+		default:
+			return state;
 };
 
 const DEFAULT_STATE = { user: {}, contacts: [] };
