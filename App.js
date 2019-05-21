@@ -5,6 +5,7 @@ import {
 	createBottomTabNavigator
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Provider } from 'react-redux';
 
 import AddContactScreen from './screens/AddContactScreen';
 import SettingsScreen from './screens/SettingsScreen';
@@ -13,7 +14,6 @@ import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import { fetchUsers } from './api';
 import contacts from './contacts';
-import { Provider } from 'redux';
 import store from './redux/store';
 
 const MainStack = createStackNavigator(
