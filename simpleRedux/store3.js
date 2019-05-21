@@ -1,3 +1,5 @@
+const fetch = require('isomorphic-fetch');
+
 const login = async (username, password) => {
 	const response = await fetch('http://localhost:8000', {
 		method: 'POST',
