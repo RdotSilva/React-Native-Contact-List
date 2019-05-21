@@ -28,14 +28,12 @@ class ContactListScreen extends React.Component {
 	};
 
 	render() {
-		const contacts = store.getState().contacts;
-
 		return (
 			<View style={styles.container}>
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				{this.state.showContacts && (
 					<SectionListContacts
-						contacts={contacts}
+						contacts={this.props.contacts}
 						onSelectContact={this.handleSelectContact}
 					/>
 				)}
