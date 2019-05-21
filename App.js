@@ -13,6 +13,8 @@ import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import { fetchUsers } from './api';
 import contacts from './contacts';
+import { Provider } from 'redux';
+import store from './redux/store';
 
 const MainStack = createStackNavigator(
 	{
@@ -81,6 +83,10 @@ export default class App extends React.Component {
 	};
 
 	render() {
-		return <MainTabs />;
+		return (
+			<Provider store={store}>
+				<MainTabs />
+			</Provider>
+		);
 	}
 }
