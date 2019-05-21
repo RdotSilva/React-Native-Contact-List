@@ -30,6 +30,7 @@ class Store {
 		if (typeof action === 'function') {
 			action(this.dispatch.bind(this));
 		} else {
+			console.log('received an action:', action.type);
 			this.state = this.reducer(this.state, action);
 		}
 	}
@@ -92,14 +93,16 @@ logInUser(); // returns dispatch => {}
 
 const store = new Store(reducer, DEFAULT_STATE);
 
-store.dispatch(logInUser());
+store.dispatch(logInUser('username', 'password'));
 
-store.dispatch(updateUser({ foo: 'foo' }));
-store.dispatch(updateUser({ bar: 'bar' }));
-store.dispatch(updateUser({ foo: 'baz' }));
+// store.dispatch(logInUser());
 
-store.dispatch(addContact({ name: 'My Name', number: '12345' }));
-store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
-store.dispatch(addContact({ name: 'My Name 3', number: '55353' }));
+// store.dispatch(updateUser({ foo: 'foo' }));
+// store.dispatch(updateUser({ bar: 'bar' }));
+// store.dispatch(updateUser({ foo: 'baz' }));
+
+// store.dispatch(addContact({ name: 'My Name', number: '12345' }));
+// store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
+// store.dispatch(addContact({ name: 'My Name 3', number: '55353' }));
 
 console.log(store.getState());
