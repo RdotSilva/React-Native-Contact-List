@@ -1,42 +1,37 @@
 import React from 'react';
 import {
-	Button,
-	SectionList,
-	ScrollView,
-	StyleSheet,
-	Text,
-	View
-} from 'react-native';
-import { Constants } from 'expo';
-import {
 	createStackNavigator,
 	createSwitchNavigator,
 	createBottomTabNavigator
 } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import AddContactScreen from './screens/AddContactScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import ContactListScreen from './screens/ContactListScreen';
 import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import { Ionicons } from 'react-native-vector-icons';
 import { fetchUsers } from './api';
 import contacts from './contacts';
 
-const ContactsTab = createStackNavigator(
+const MainStack = createStackNavigator(
 	{
-		AddContact: AddContactScreen,
 		ContactList: ContactListScreen,
-		ContactDetails: ContactDetailsScreen
+		ContactDetails: ContactDetailsScreen,
+		AddContact: AddContactScreen
 	},
 	{
 		initialRouteName: 'ContactList',
 		navigationOptions: {
-			headerTintColor: '#a41034'
+			headerTintColor: '#a41034',
+			headerStyle: {
+				backgroundColor: '#fff'
+			}
 		}
 	}
 );
 
-ContactsTab.navigationOptions = {
+MainStack.navigationOptions = {
 	tabBarIcon: ({ focused, tintColor }) => (
 		<Ionicons
 			name={`ios-contacts${focused ? '' : '-outline'}`}
@@ -46,58 +41,48 @@ ContactsTab.navigationOptions = {
 	)
 };
 
-const MainNavigator = createBottomTabNavigator(
+const MainTabs = createBottomTabNavigator(
 	{
-		Contacts: ContactsTab,
+		Contacts: MainStack,
 		Settings: SettingsScreen
 	},
 	{
 		tabBarOptions: {
-			activeTintColor: '#a40134'
+			activeTintColor: '#a41034'
 		}
 	}
 );
 
-const AppNavigator = createSwitchNavigator(
-	{
-		Main: MainNavigator,
-		Login: LoginScreen
-	},
-	{
-		initialRouteName: 'Main'
-	}
-);
+const AppNavigator = createSwitchNavigator({
+	Login: LoginScreen,
+	Main: MainTabs
+});
 
 export default class App extends React.Component {
 	state = {
 		contacts
 	};
 
-	// componentDidMount() {
-	// 	this.getUsers();
-	// }
+	/*
+  componentDidMount() {
+    this.getUsers()
+  }
 
-	// // Fetch users from api.js and set state with results
-	// getUsers = async () => {
-	// 	const results = await fetchUsers();
-	// 	this.setState({ contacts: results });
-	// };
+  getUsers = async () => {
+    const results = await fetchUsers()
+    this.setState({contacts: results})
+  }
+  */
 
-	// Add a new conctact
 	addContact = newContact => {
 		this.setState(prevState => ({
-			showForm: false,
-			contacts: [...this.state.contacts, newContact]
+			contacts: [...prevState.contacts, newContact]
 		}));
 	};
 
-	// item: {name: String, phone: String }
-	// renderItem = obj => <Row {...obj.item} />;
-	// renderItem = obj => <Row name={obj.item.name} phone={obj.item.phone} />
-
 	render() {
 		return (
-			<AppNavigator
+			<MainTabs
 				screenProps={{
 					contacts: this.state.contacts,
 					addContact: this.addContact
@@ -106,11 +91,3 @@ export default class App extends React.Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		paddingTop: Constants.statusBarHeight
-	}
-});
