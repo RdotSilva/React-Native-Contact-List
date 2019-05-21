@@ -8,14 +8,14 @@ const UPDATE_CONTACT = 'UPDATE_CONTACT';
 // Init blank state
 const DEFAULT_STATE = { user: {}, contacts: [] };
 
-const contactReducer = (state, action) => {
+const contactReducer = (state = [], action) => {
 	if (action.type === UPDATE_CONTACT) {
 		return [...state, action.payload];
 	}
 	return state;
 };
 
-const userReducer = (state, action) => {
+const userReducer = (state = {}, action) => {
 	if (action.type === UPDATE_USER) {
 		return {
 			...state,
