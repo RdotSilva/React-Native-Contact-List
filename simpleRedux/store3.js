@@ -60,9 +60,13 @@ const addContact = newContact => ({
 // Async Action Creator
 const logInUser = () => dispatch => {
 	dispatch({ type: 'LOG_IN_SENT' });
-	fetch().then(() => {
-		dispatch({ type: 'LOG_IN_SUCCESS' });
-	});
+	fetch()
+		.then(() => {
+			dispatch({ type: 'LOG_IN_SUCCESS' });
+		})
+		.catch(err => {
+			dispatch({ type: 'LOG_IN_REJECTED' });
+		});
 };
 
 logInUser(); // returns dispatch => {}
