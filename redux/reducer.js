@@ -9,19 +9,20 @@ const contactReducer = (state = [], action) => {
 };
 
 const userReducer = (state = {}, action) => {
-	if (action.type === UPDATE_USER) {
-		return {
-			...state,
-			...action.payload
-		};
+	switch (action.type) {
+		case UPDATE_USER:
+			return {
+				...state,
+				...action.payload
+			};
+		case UPDATE_CONTACT:
+			return {
+				...state,
+				prevContact: action.payload
+			};
+		default:
+			return state;
 	}
-	if (action.type === UPDATE_CONTACT) {
-		return {
-			...state,
-			prevContact: action.payload
-		};
-	}
-	return state;
 };
 
 // Main reducer that combines all reducers
