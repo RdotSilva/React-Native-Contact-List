@@ -1,60 +1,16 @@
-// import { createStore } from 'redux';
-const { createStore, combineReducers } = require('redux');
+import { createStore } from 'redux';
+import reducer from './reducer';
 
-// Action Types
-const UPDATE_USER = 'UPDATE_USER';
-const UPDATE_CONTACT = 'UPDATE_CONTACT';
+const store = createStore(reducer);
 
-// Init blank state
-const DEFAULT_STATE = { user: {}, contacts: [] };
+// store.dispatch(updateUser({ foo: 'foo' }));
+// store.dispatch(updateUser({ bar: 'bar' }));
+// store.dispatch(updateUser({ foo: 'baz' }));
 
-const contactReducer = (state = [], action) => {
-	if (action.type === UPDATE_CONTACT) {
-		return [...state, action.payload];
-	}
-	return state;
-};
+// store.dispatch(addContact({ name: 'My Name', number: '12345' }));
+// store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
+// store.dispatch(addContact({ name: 'My Name 3', number: '55353' }));
 
-const userReducer = (state = {}, action) => {
-	if (action.type === UPDATE_USER) {
-		return {
-			...state,
-			...action.payload
-		};
-	}
-	if (action.type === UPDATE_CONTACT) {
-		return {
-			...state,
-			prevContact: action.payload
-		};
-	}
-	return state;
-};
+// console.log(store.getState());
 
-const reducer = combineReducers({
-	user: userReducer,
-	contacts: contactReducer
-});
-
-//Action Creators
-const updateUser = update => ({
-	type: UPDATE_USER,
-	payload: update
-});
-
-const addContact = newContact => ({
-	type: UPDATE_CONTACT,
-	payload: newContact
-});
-
-const store = createStore(reducer, DEFAULT_STATE);
-
-store.dispatch(updateUser({ foo: 'foo' }));
-store.dispatch(updateUser({ bar: 'bar' }));
-store.dispatch(updateUser({ foo: 'baz' }));
-
-store.dispatch(addContact({ name: 'My Name', number: '12345' }));
-store.dispatch(addContact({ name: 'My Name 2', number: '54321' }));
-store.dispatch(addContact({ name: 'My Name 3', number: '55353' }));
-
-console.log(store.getState());
+export default store;
