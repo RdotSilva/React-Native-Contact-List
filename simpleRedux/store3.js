@@ -11,8 +11,12 @@ class Store {
 		return this.state;
 	}
 
-	dispatch(update) {
-		this.state = this.reducer(this.state, update);
+	dispatch(action) {
+		if (typeof action === 'function') {
+			action(this.dispatch.bind(this));
+		} else {
+			this.state = this.reducer(this.state, action);
+		}
 	}
 }
 
