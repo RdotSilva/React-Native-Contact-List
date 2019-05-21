@@ -1,3 +1,18 @@
+const login = async (username, password) => {
+	const response = await fetch('http://localhost:8000', {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify({ username, password })
+	});
+
+	if (response.ok) {
+		return true;
+	}
+
+	const errMessage = await response.text();
+	throw new Error(errMessage);
+};
+
 // Action Types
 const UPDATE_USER = 'UPDATE_USER';
 const UPDATE_CONTACT = 'UPDATE_CONTACT';
@@ -62,7 +77,7 @@ const addContact = newContact => ({
 });
 
 // Async Action Creator
-const logInUser = () => dispatch => {
+const logInUser = (username, password) => dispatch => {
 	dispatch({ type: 'LOG_IN_SENT' });
 	fetch()
 		.then(() => {
