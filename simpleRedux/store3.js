@@ -79,7 +79,7 @@ const addContact = newContact => ({
 // Async Action Creator
 const logInUser = (username, password) => dispatch => {
 	dispatch({ type: 'LOG_IN_SENT' });
-	fetch()
+	login(username, password)
 		.then(() => {
 			dispatch({ type: 'LOG_IN_SUCCESS' });
 		})
