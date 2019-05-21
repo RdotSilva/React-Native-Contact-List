@@ -1,5 +1,5 @@
 // import { createStore } from 'redux';
-const { createStore } = require('redux');
+const { createStore, combineReducers } = require('redux');
 
 // Action Types
 const UPDATE_USER = 'UPDATE_USER';
@@ -31,9 +31,9 @@ const userReducer = (state, action) => {
 	return state;
 };
 
-const reducer = (state, action) => ({
-	user: userReducer(state.user, action),
-	contacts: contactReducer(state.contacts, action)
+const reducer = combineReducers({
+	user: userReducer,
+	contacts: contactReducer
 });
 
 //Action Creators
