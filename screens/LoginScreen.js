@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
+import { connect } from 'react-redux';
 
+import { logInUser } from '../redux/actions';
 import { login } from '../api';
 
-export default class LoginScreen extends React.Component {
+class LoginScreen extends React.Component {
 	state = {
 		username: '',
 		password: ''
@@ -11,6 +13,7 @@ export default class LoginScreen extends React.Component {
 
 	_login = async () => {
 		try {
+			this.props.logInUser(this.state.username, this.state.password);
 			const success = await login(
 				this.state.username,
 				this.state.password
@@ -65,3 +68,8 @@ const styles = StyleSheet.create({
 		color: 'red'
 	}
 });
+
+export default connect(
+	null,
+	{ logInUser }
+)(LoginScreen);
