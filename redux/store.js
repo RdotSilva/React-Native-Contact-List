@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { addContact } from './actions';
 import reducer from './reducer';
 
-const thunk = store => next => action => {
+const thunkMiddleware = store => next => action => {
 	if (typeof action === 'function') {
 		action(store.dispatch);
 	} else {
@@ -10,7 +10,7 @@ const thunk = store => next => action => {
 	}
 };
 
-const store = createStore(reducer, applyMiddleware(thunk);
+const store = createStore(reducer, applyMiddleware(thunkMiddleware);
 
 // store.dispatch(updateUser({ foo: 'foo' }));
 // store.dispatch(updateUser({ bar: 'bar' }));
