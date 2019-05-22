@@ -18,6 +18,12 @@ class LoginScreen extends React.Component {
 		password: ''
 	};
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.token) {
+			this.props.navigation.navigate('Main');
+		}
+	}
+
 	_login = async () => {
 		this.props.logInUser(this.state.username, this.state.password);
 	};
