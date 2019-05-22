@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-type';
+import PropTypes from 'prop-types';
 
 import { logInUser } from '../redux/actions';
 import { login } from '../api';
