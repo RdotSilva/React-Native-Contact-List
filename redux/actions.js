@@ -19,13 +19,12 @@ export const addContact = newContact => ({
 });
 
 // Async Action Creator
-export const logInUser = (username, password) => dispatch => {
+export const logInUser = (username, password) => async dispatch => {
 	dispatch({ type: LOG_IN_SENT });
-	login(username, password)
-		.then(token => {
-			dispatch({ type: LOG_IN_FULFILLED, payload: token });
-		})
-		.catch(err => {
-			dispatch({ type: LOG_IN_REJECTED, payload: err.message });
-		});
+	try {
+		const token = await login(username, password);
+		dispatch({ type: LOG_IN_FULFILLED, payload: token });
+	} catch (err) {
+		dispatch({ type: LOG_IN_REJECTED, payload: err.message });
+	}
 };
