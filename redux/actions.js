@@ -22,10 +22,10 @@ export const addContact = newContact => ({
 export const logInUser = (username, password) => dispatch => {
 	dispatch({ type: LOG_IN_SENT });
 	login(username, password)
-		.then(() => {
-			dispatch({ type: LOG_IN_FULFILLED });
+		.then(token => {
+			dispatch({ type: LOG_IN_FULFILLED, payload: token });
 		})
 		.catch(err => {
-			dispatch({ type: LOG_IN_REJECTED });
+			dispatch({ type: LOG_IN_REJECTED, payload: err.message });
 		});
 };
