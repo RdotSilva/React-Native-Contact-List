@@ -1,11 +1,18 @@
 import React from 'react';
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-type';
 
 import { logInUser } from '../redux/actions';
 import { login } from '../api';
 
 class LoginScreen extends React.Component {
+	static propTypes = {
+		err: PropTypes.string,
+		token: PropTypes.string,
+		logInUser: PropTypes.func
+	};
+
 	state = {
 		username: '',
 		password: ''
