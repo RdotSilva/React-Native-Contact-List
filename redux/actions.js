@@ -17,13 +17,13 @@ export const addContact = newContact => ({
 });
 
 // Async Action Creator
-const logInUser = (username, password) => dispatch => {
-	dispatch({ type: 'LOG_IN_SENT' });
+export const logInUser = (username, password) => dispatch => {
+	dispatch({ type: LOG_IN_SENT });
 	login(username, password)
 		.then(() => {
-			dispatch({ type: 'LOG_IN_SUCCESS' });
+			dispatch({ type: LOG_IN_FULFILLED });
 		})
 		.catch(err => {
-			dispatch({ type: 'LOG_IN_REJECTED' });
+			dispatch({ type: LOG_IN_REJECTED });
 		});
 };
