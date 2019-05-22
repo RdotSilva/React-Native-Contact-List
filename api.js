@@ -13,7 +13,8 @@ export const fetchUsers = async () => {
 };
 
 export const login = async (username, password) => {
-	const response = await fetch('http://localhost:8000', {
+	const response = await fetch('http://10.0.2.2:8000', {
+		// Change localhost to 10.0.2.2 to fix emulator bug
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({ username, password })
