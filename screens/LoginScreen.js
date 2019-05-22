@@ -65,6 +65,11 @@ const styles = StyleSheet.create({
 	}
 });
 
+const mapStateToProps = state => ({
+	err: state.user.loginErr,
+	token: state.user.token
+});
+
 export default connect(
 	null,
 	{ logInUser }
