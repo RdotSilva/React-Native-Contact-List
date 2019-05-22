@@ -15,3 +15,15 @@ export const addContact = newContact => ({
 	type: UPDATE_CONTACT,
 	payload: newContact
 });
+
+// Async Action Creator
+const logInUser = (username, password) => dispatch => {
+	dispatch({ type: 'LOG_IN_SENT' });
+	login(username, password)
+		.then(() => {
+			dispatch({ type: 'LOG_IN_SUCCESS' });
+		})
+		.catch(err => {
+			dispatch({ type: 'LOG_IN_REJECTED' });
+		});
+};
