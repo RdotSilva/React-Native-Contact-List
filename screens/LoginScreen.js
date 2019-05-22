@@ -33,7 +33,7 @@ class LoginScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.error}>{this.state.err}</Text>
+				<Text style={styles.error}>{this.props.err}</Text>
 				<TextInput
 					placeholder="username"
 					value={this.state.username}
