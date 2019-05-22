@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
-import { UPDATE_USER, UPDATE_CONTACT } from './actions';
+import {
+	UPDATE_USER,
+	UPDATE_CONTACT,
+	LOG_IN_SENT,
+	LOG_IN_FULFILLED,
+	LOG_IN_REJECTED
+} from './actions';
 
 const contactReducer = (state = [], action) => {
 	if (action.type === UPDATE_CONTACT) {
@@ -19,6 +25,16 @@ const userReducer = (state = {}, action) => {
 			return {
 				...state,
 				prevContact: action.payload
+			};
+		case LOG_IN_FULFILLED:
+			return {
+				...state,
+				token: action.payload
+			};
+		case LOG_IN_REJECTED:
+			return {
+				...state,
+				loginErr: action.payload
 			};
 		default:
 			return state;
