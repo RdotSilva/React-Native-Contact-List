@@ -1,3 +1,5 @@
+import { login } from '../api';
+
 // Action Types
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_CONTACT = 'UPDATE_CONTACT';
