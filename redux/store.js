@@ -1,16 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import { addContact } from './actions';
 import reducer from './reducer';
+import thunk from 'redux-thunk';
 
-const thunkMiddleware = store => next => action => {
-	if (typeof action === 'function') {
-		action(store.dispatch);
-	} else {
-		next(action);
-	}
-};
+// const thunkMiddleware = store => next => action => {
+// 	if (typeof action === 'function') {
+// 		action(store.dispatch);
+// 	} else {
+// 		next(action);
+// 	}
+// };
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 // store.dispatch(updateUser({ foo: 'foo' }));
 // store.dispatch(updateUser({ bar: 'bar' }));
