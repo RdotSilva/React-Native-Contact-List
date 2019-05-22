@@ -14,10 +14,6 @@ class LoginScreen extends React.Component {
 	_login = async () => {
 		try {
 			this.props.logInUser(this.state.username, this.state.password);
-			const success = await login(
-				this.state.username,
-				this.state.password
-			);
 			this.props.navigation.navigate('Main');
 		} catch (err) {
 			const errMessage = err.message;
