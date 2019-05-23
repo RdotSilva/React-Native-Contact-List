@@ -19,6 +19,10 @@ export const addContact = newContact => ({
 	payload: newContact
 });
 
+export const changeFirstContact = () => ({
+	type: CHANGE_FIRST_CONTACT
+});
+
 // Async Action Creator
 export const logInUser = (username, password) => async dispatch => {
 	dispatch({ type: LOG_IN_SENT });
