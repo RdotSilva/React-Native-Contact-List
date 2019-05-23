@@ -4,12 +4,23 @@ import {
 	UPDATE_CONTACT,
 	LOG_IN_SENT,
 	LOG_IN_FULFILLED,
-	LOG_IN_REJECTED
+	LOG_IN_REJECTED,
+	CHANGE_FIRST_CONTACT
 } from './actions';
 
-const contactReducer = (state = [], action) => {
+import contacts from '../contacts';
+
+const contactReducer = (state = contacts, action) => {
 	if (action.type === UPDATE_CONTACT) {
 		return [...state, action.payload];
+	}
+	if (action.type === CHANGE_FIRST_CONTACT) {
+		const [firstContact, ...rest] = state;
+		if (!firstContact) return state;
+		// [{name: 'jordan', phone: '1234567890'}]
+		// firstContact, rest = []
+		const newContact = { ...firstContact, name: 'Overwrite Name' };
+		return [newContact, ...rest];
 	}
 	return state;
 };
