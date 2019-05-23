@@ -6,6 +6,7 @@ import {
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AddContactScreen from './screens/AddContactScreen';
 import SettingsScreen from './screens/SettingsScreen';
@@ -85,7 +86,9 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<AppNavigator />
+				<PersistGate loading={null} persistor={persistor}>
+					<AppNavigator />
+				</PersistGate>
 			</Provider>
 		);
 	}
