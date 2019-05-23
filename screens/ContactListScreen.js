@@ -1,20 +1,22 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-import SectionListContacts from '../SectionListContacts';
 import { connect } from 'react-redux';
 
-class ContactListScreen extends React.Component {
-	static navigationOptions = ({ navigation }) => ({
-		headerTitle: 'Contacts',
-		headerRight: (
-			<Button
-				title="Add"
-				onPress={() => navigation.navigate('AddContact')}
-				color="#a41034"
-			/>
-		)
-	});
+import FlatListContacts from '../FlatListContacts';
+import ScrollViewContacts from '../ScrollViewContacts';
 
+// eslint-disable-next-line no-constant-condition
+const ContactsList = false ? FlatListContacts : ScrollViewContacts;
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1
+	}
+});
+
+class ContactListScreen extends React.Component {
 	state = {
 		showContacts: true
 	};
@@ -23,32 +25,20 @@ class ContactListScreen extends React.Component {
 		this.setState(prevState => ({ showContacts: !prevState.showContacts }));
 	};
 
-	handleSelectContact = contact => {
-		this.props.navigation.push('ContactDetails', contact);
-	};
-
 	render() {
 		return (
 			<View style={styles.container}>
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				{this.state.showContacts && (
-					<SectionListContacts
-						contacts={this.props.contacts}
-						onSelectContact={this.handleSelectContact}
-					/>
+					<ContactsList contacts={this.props.contacts} />
 				)}
 			</View>
 		);
 	}
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	}
-});
-
 const mapStateToProps = state => ({
 	contacts: state.contacts
 });
+
 export default connect(mapStateToProps)(ContactListScreen);
