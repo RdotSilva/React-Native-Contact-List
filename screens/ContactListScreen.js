@@ -32,7 +32,7 @@ class ContactListScreen extends React.Component {
 				<Button title="toggle contacts" onPress={this.toggleContacts} />
 				<Button
 					title="change first contact"
-					onPress={changeFirstContact}
+					onPress={this.props.changeFirstContact}
 				/>
 				{this.state.showContacts && (
 					<ContactsList contacts={this.props.contacts} />
@@ -46,4 +46,7 @@ const mapStateToProps = state => ({
 	contacts: state.contacts
 });
 
-export default connect(mapStateToProps)(ContactListScreen);
+export default connect(
+	mapStateToProps,
+	{ changeFirstContact }
+)(ContactListScreen);
