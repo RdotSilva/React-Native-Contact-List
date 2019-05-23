@@ -57,7 +57,7 @@ const MainTabs = createBottomTabNavigator(
 );
 
 const AppNavigator = createSwitchNavigator({
-	Login: LoginScreen,
+	// Login: LoginScreen,
 	Main: MainTabs
 });
 
