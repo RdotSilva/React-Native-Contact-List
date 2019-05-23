@@ -21,7 +21,9 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-react": "^7.13.0"
+    "eslint-config-kensho": "^10.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "prettier": "^1.17.1"
   },
   "private": true
 }
