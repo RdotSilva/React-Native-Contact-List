@@ -15,7 +15,7 @@ import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import { fetchUsers } from './api';
 import contacts from './contacts';
-import store from './redux/store';
+import { store, persistor } from './redux/store';
 
 const MainStack = createStackNavigator(
 	{
