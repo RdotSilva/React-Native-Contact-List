@@ -6,6 +6,7 @@ export const UPDATE_CONTACT = 'UPDATE_CONTACT';
 export const LOG_IN_SENT = 'LOG_IN_SENT';
 export const LOG_IN_FULFILLED = 'LOG_IN_FULFILLED';
 export const LOG_IN_REJECTED = 'LOG_IN_REJECTED';
+export const CHANGE_FIRST_CONTACT = 'CHANGE_FIRST_CONTACT';
 
 //Action Creators
 export const updateUser = update => ({
