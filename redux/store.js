@@ -1,10 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
-import { addContact } from './actions';
-import reducer from './reducer';
 import thunk from 'redux-thunk';
-
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import reducer from './reducer';
 
 const persistConfig = {
 	key: 'root',
@@ -13,23 +12,30 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-// const thunkMiddleware = store => next => action => {
-// 	if (typeof action === 'function') {
-// 		action(store.dispatch);
-// 	} else {
-// 		next(action);
-// 	}
-// };
+/*
+const thunkMiddleware = store => next => action => {
+  if (typeof action === 'function') {
+    action(store.dispatch)
+  } else {
+    next(action)
+  }
+}
+*/
 
 export const store = createStore(persistedReducer, applyMiddleware(thunk));
 export const persistor = persistStore(store);
 
-// store.dispatch(updateUser({ foo: 'foo' }));
-// store.dispatch(updateUser({ bar: 'bar' }));
-// store.dispatch(updateUser({ foo: 'baz' }));
+// non-persistent store
+export default createStore(reducer, applyMiddleware(thunk));
 
-// store.dispatch(addContact({ name: 'My Name', phone: '12345' }));
-// store.dispatch(addContact({ name: 'My Name 2', phone: '54321' }));
-// store.dispatch(addContact({ name: 'My Name 3', phone: '55353' }));
+/*
+store.dispatch(updateUser({foo: 'foo'}))
+store.dispatch(updateUser({bar: 'bar'}))
+store.dispatch(updateUser({foo: 'baz'}))
 
-// console.log(store.getState());
+store.dispatch(addContact({name: 'jordan h', phone: '1234567890'}))
+store.dispatch(addContact({name: 'jordan h', phone: '1234567890'}))
+store.dispatch(addContact({name: 'david m', phone: '5050505050'}))
+
+console.log(store.getState())
+*/
