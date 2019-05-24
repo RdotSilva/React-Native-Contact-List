@@ -14,9 +14,9 @@ export default class PureButtonScreen extends React.Component {
 		count: 0
 	};
 
-	inc() {
+	inc = () => {
 		this.setState(prevState => ({ count: prevState.count + 1 }));
-	}
+	};
 
 	render() {
 		return (
