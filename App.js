@@ -5,7 +5,8 @@ import { Constants } from 'expo';
 
 import { PersistGate } from 'redux-persist/integration/react'; // eslint-disable-line
 
-import ContactListScreen from './screens/ContactListScreen';
+// import ContactListScreen from './screens/ContactListScreen';
+import PureButtonScreen from './PureButtonScreen';
 import store from './redux/store';
 
 const styles = StyleSheet.create({
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 export default () => (
 	<Provider store={store}>
 		<View style={styles.app}>
-			<ContactListScreen />
+			<PureButtonScreen />
 		</View>
 	</Provider>
 );
