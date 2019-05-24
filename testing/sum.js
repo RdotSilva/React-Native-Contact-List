@@ -1,11 +1,7 @@
 // Testing
 
 function sum(x, y) {
-	return x + y + y;
+	return x + y;
 }
 
-function mult(x, y) {
-	return x * y;
-}
-
-module.exports = sum;
+export default sum;
