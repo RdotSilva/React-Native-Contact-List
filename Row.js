@@ -6,7 +6,11 @@ const styles = StyleSheet.create({
 	row: { padding: 20 }
 });
 
-class Row extends React.PureComponent {
+class Row extends React.Component {
+	shouldComponentUpdate(nextProps) {
+		return nextProps.name !== this.props.name;
+	}
+
 	render() {
 		const { props } = this;
 		return (
