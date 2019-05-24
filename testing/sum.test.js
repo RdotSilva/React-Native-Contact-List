@@ -10,3 +10,6 @@ test('sums 0 and 0', () => {
 test('sums 20 and 30', () => {
 	expect(sum(20, 30)).toBe(50);
 });
+test('sums 20 and 22', () => {
+	expect(sum(20, 22)).toBe(42);
+});
