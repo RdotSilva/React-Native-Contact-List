@@ -1,6 +1,6 @@
 import * as actions from './actions';
 
-describe('updateUser retruns actions', () => {
+describe('updateUser returns actions', () => {
 	it('returns an action', () => {
 		expect(actions.updateUser({ name: 'test name' })).toMatchSnapshot();
 	});
