@@ -18,7 +18,9 @@ describe('loginUser returns actions', () => {
 	it('dispatches LOG_IN_SENT', async () => {
 		const mockDispatch = jest.fn();
 		await actions.logInUser('', '')(mockDispatch);
-		// mockDispatch.mock.calls; // all of the args that the mock fn was invoked on
-		console.log(mockDispatch.mock.calls);
+		// mockDispatch.mock.calls all the args that the mock fn was invoked on
+		expect(mockDispatch.mock.calls[0][0]).toEqual({
+			type: actions.LOG_IN_SENT
+		});
 	});
 });
