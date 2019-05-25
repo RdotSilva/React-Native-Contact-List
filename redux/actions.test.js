@@ -13,3 +13,12 @@ describe('updateUser returns actions', () => {
 		expect(actions.updateUser({ name: '' })).toMatchSnapshot();
 	});
 });
+
+describe('loginUser returns actions', () => {
+	it('dispatches LOG_IN_SENT', async () => {
+		const mockDispatch = jest.fn();
+		await actions.logInUser('', '')(mockDispatch);
+		// mockDispatch.mock.calls; // all of the args that the mock fn was invoked on
+		console.log(mockDispatch.mock.calls);
+	});
+});
