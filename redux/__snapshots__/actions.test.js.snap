@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`updateUser returns an action 1`] = `
+exports[`updateUser retruns actions handles empty object 1`] = `
+Object {
+  "payload": Object {},
+  "type": "UPDATE_USER",
+}
+`;
+
+exports[`updateUser retruns actions handles emptyy name 1`] = `
+Object {
+  "payload": Object {
+    "name": "",
+  },
+  "type": "UPDATE_USER",
+}
+`;
+
+exports[`updateUser retruns actions returns an action 1`] = `
 Object {
   "payload": Object {
     "name": "test name",
