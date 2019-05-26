@@ -16,9 +16,10 @@ describe('updateUser returns actions', () => {
 
 describe('loginUser returns actions', () => {
 	const errMessage = 'incorrect creds';
+	const fakeToken = 'thisIsATestToken';
 	const mockLogin = (username, password) => {
 		if (username === 'u' && password === 'p') {
-			return 'thisIsATestToken';
+			return fakeToken;
 		}
 		throw new Error(errMessage);
 	};
@@ -38,7 +39,7 @@ describe('loginUser returns actions', () => {
 
 		expect(mockDispatch.mock.calls[1][0]).toEqual({
 			type: actions.LOG_IN_FULFILLED,
-			payload: 'thisIsATestToken'
+			payload: fakeToken
 		});
 		expect(mockDispatch.mock.calls[1]).toMatchSnapshot();
 	});
