@@ -42,5 +42,15 @@ describe('loginUser returns actions', () => {
 		expect(mockDispatch.mock.calls[1]).toMatchSnapshot();
 	});
 
-	it('dispatches LOG_IN_REJECTED with incorrect creds', async () => {});
+	it('dispatches LOG_IN_REJECTED with incorrect creds', async () => {
+		const mockDispatch = jest.fn();
+
+		await actions.logInUser('u', 'p', mockLogin)(mockDispatch);
+
+		expect(mockDispatch.mock.calls[1][0]).toEqual({
+			type: actions.LOG_IN_REJECTED,
+			payload: errMessage
+		});
+		expect(mockDispatch.mock.calls[1]).toMatchSnapshot();
+	});
 });
