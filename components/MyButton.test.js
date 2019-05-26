@@ -7,4 +7,11 @@ describe('MyButton', () => {
 		const button = renderer.create(<MyButton />).toJSON();
 		expect(button).toMatchSnapshot();
 	});
+	it('correctly overrides default color', () => {
+		const color = 'red';
+		const button = getUnderlyingButton(
+			renderer.create(<MyButton color={color} />)
+		);
+		expect(button.props.color).toBe(color);
+	});
 });
