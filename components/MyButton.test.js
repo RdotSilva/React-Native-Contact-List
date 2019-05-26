@@ -1,3 +1,6 @@
 import MyButton from './MyButton';
+import renderer from 'react-test-renderer';
 
-describe('MyButton', () => {});
+describe('MyButton', () => {
+	it('renders', () => {});
+});
