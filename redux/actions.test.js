@@ -33,10 +33,10 @@ describe('loginUser returns actions', () => {
 		};
 		await actions.logInUser('u', 'p', mockLogin)(mockDispatch);
 
-		expect(mockDispatch.mock.calls[0][0]).toEqual({
+		expect(mockDispatch.mock.calls[1][0]).toEqual({
 			type: actions.LOG_IN_FULFILLED,
-			payload: { token: 'thisIsATestToken' }
+			payload: 'thisIsATestToken'
 		});
-		expect(mockDispatch.mock.calls[2]).toMatchSnapshot();
+		expect(mockDispatch.mock.calls[1]).toMatchSnapshot();
 	});
 });

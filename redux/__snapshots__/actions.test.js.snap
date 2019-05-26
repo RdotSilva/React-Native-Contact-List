@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`loginUser returns actions dispatches LOG_IN_FULFILLED with correct creds 1`] = `
+Array [
+  Object {
+    "payload": "thisIsATestToken",
+    "type": "LOG_IN_FULFILLED",
+  },
+]
+`;
+
 exports[`updateUser retruns actions handles empty object 1`] = `
 Object {
   "payload": Object {},
