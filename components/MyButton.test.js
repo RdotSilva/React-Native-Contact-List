@@ -2,5 +2,8 @@ import MyButton from './MyButton';
 import renderer from 'react-test-renderer';
 
 describe('MyButton', () => {
-	it('renders', () => {});
+	it('renders', () => {
+		const button = renderer.create(<MyButton />).toJSON();
+		expect(button).toMatchSnapshot();
+	});
 });
