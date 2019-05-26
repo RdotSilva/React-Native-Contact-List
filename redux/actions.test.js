@@ -23,7 +23,7 @@ describe('loginUser returns actions', () => {
 			type: actions.LOG_IN_SENT
 		});
 	});
-	it('dispatches LOG_IN_FULFILLED with correct creds', () => {
+	it('dispatches LOG_IN_FULFILLED with correct creds', async () => {
 		const mockDispatch = jest.fn();
 		const mockLogin = (username, password) => {
 			if (username === 'u' && password === 'p') {
@@ -31,11 +31,12 @@ describe('loginUser returns actions', () => {
 			}
 			throw new Error('incorrect creds');
 		};
-		await actions.logInUser('u', 'p', mockLogin)(mockDispatch)
-		
+		await actions.logInUser('u', 'p', mockLogin)(mockDispatch);
+
 		expect(mockDispatch.mock.calls[0][0]).toEqual({
-			type: actions.LOG_IN_FULFILLED, payload: {token: 'thisIsATestToken'}
+			type: actions.LOG_IN_FULFILLED,
+			payload: { token: 'thisIsATestToken' }
 		});
-		expect(mockDispatch.mock.calls[2]).toMatchSnapshot()
+		expect(mockDispatch.mock.calls[2]).toMatchSnapshot();
 	});
 });
