@@ -7,5 +7,15 @@ const DEFAULT_STATE = {
 };
 
 describe('contact reducer', () => {
-	it('successfully adds new user', () => {});
+	it('successfully adds new user', () => {
+		expect(
+			reducer(
+				DEFAULT_STATE,
+				actions.addContact({
+					name: 'test user',
+					phone: '1234567890'
+				})
+			)
+		).toMatchSnapshot();
+	});
 });
