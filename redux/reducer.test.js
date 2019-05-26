@@ -21,7 +21,15 @@ describe('contact reducer', () => {
 });
 
 describe('user reducer', () => {
-    it('successfully updates user'. () => {
-        
-    })
+	it('successfully updates user', () => {
+		expect(
+			reducer(
+				DEFAULT_STATE,
+				actions.updateUser({
+					name: 'test user',
+					phone: '1234567890'
+				})
+			)
+		).toMatchSnapshot();
+	});
 });
