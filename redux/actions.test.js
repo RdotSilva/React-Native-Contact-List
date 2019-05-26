@@ -15,11 +15,12 @@ describe('updateUser returns actions', () => {
 });
 
 describe('loginUser returns actions', () => {
+	const errMessage = 'incorrect creds';
 	const mockLogin = (username, password) => {
 		if (username === 'u' && password === 'p') {
 			return 'thisIsATestToken';
 		}
-		throw new Error('incorrect creds');
+		throw new Error(errMessage);
 	};
 
 	it('dispatches LOG_IN_SENT', async () => {
