@@ -9,12 +9,12 @@ describe('updateUser returns actions', () => {
 		expect(actions.updateUser({})).toMatchSnapshot();
 	});
 
-	it('handles emptyy name', () => {
+	it('handles empty name', () => {
 		expect(actions.updateUser({ name: '' })).toMatchSnapshot();
 	});
 });
 
-describe('loginUser returns actions', () => {
+describe('logInUser returns actions', () => {
 	const errMessage = 'incorrect creds';
 	const fakeToken = 'thisIsATestToken';
 	const mockLogin = (username, password) => {
@@ -46,8 +46,7 @@ describe('loginUser returns actions', () => {
 
 	it('dispatches LOG_IN_REJECTED with incorrect creds', async () => {
 		const mockDispatch = jest.fn();
-
-		await actions.logInUser('u', 'p', mockLogin)(mockDispatch);
+		await actions.logInUser('', '', mockLogin)(mockDispatch);
 
 		expect(mockDispatch.mock.calls[1][0]).toEqual({
 			type: actions.LOG_IN_REJECTED,
