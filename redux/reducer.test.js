@@ -19,3 +19,5 @@ describe('contact reducer', () => {
 		).toMatchSnapshot();
 	});
 });
+
+describe('user reducer', () => {});
