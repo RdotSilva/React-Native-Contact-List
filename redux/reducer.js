@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import {
 	UPDATE_USER,
 	UPDATE_CONTACT,
-	LOG_IN_SENT,
 	LOG_IN_FULFILLED,
 	LOG_IN_REJECTED,
 	CHANGE_FIRST_CONTACT
