@@ -20,4 +20,8 @@ describe('contact reducer', () => {
 	});
 });
 
-describe('user reducer', () => {});
+describe('user reducer', () => {
+    it('successfully updates user'. () => {
+        
+    })
+});
