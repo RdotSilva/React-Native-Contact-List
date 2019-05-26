@@ -23,4 +23,5 @@ describe('loginUser returns actions', () => {
 			type: actions.LOG_IN_SENT
 		});
 	});
+	it('dispatches LOG_IN_FULFILLED with correct creds', () => {});
 });
