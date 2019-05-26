@@ -23,5 +23,13 @@ describe('loginUser returns actions', () => {
 			type: actions.LOG_IN_SENT
 		});
 	});
-	it('dispatches LOG_IN_FULFILLED with correct creds', () => {});
+	it('dispatches LOG_IN_FULFILLED with correct creds', () => {
+		const mockDispatch = jest.fn();
+		const login = (username, password) => {
+			if (username === 'u' && password === 'p') {
+				return 'thisIsATestToken';
+			}
+			throw new Error('incorrect creds');
+		};
+	});
 });
