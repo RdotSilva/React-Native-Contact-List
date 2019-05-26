@@ -30,6 +30,7 @@ describe('loginUser returns actions', () => {
 			type: actions.LOG_IN_SENT
 		});
 	});
+
 	it('dispatches LOG_IN_FULFILLED with correct creds', async () => {
 		const mockDispatch = jest.fn();
 		await actions.logInUser('u', 'p', mockLogin)(mockDispatch);
@@ -40,4 +41,6 @@ describe('loginUser returns actions', () => {
 		});
 		expect(mockDispatch.mock.calls[1]).toMatchSnapshot();
 	});
+
+	it('dispatches LOG_IN_REJECTED with incorrect creds', async () => {});
 });
